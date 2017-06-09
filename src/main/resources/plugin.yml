@@ -1,0 +1,7 @@
+name: NoMyStuff
+version: ${project.version}
+#website:
+author: RoboMWM
+main: to.us.mlgfort.NoMyStuff.NoMyStuff
+softdepend:
+- Crackshot
