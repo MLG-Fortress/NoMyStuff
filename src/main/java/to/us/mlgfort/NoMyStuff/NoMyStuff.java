@@ -26,6 +26,7 @@ public class NoMyStuff extends JavaPlugin
     public void onEnable()
     {
         new TNTSourcer(this);
+        new TabHeaderThing(this);
     }
 
     //"API" stuff here:
