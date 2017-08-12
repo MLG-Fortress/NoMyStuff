@@ -36,7 +36,7 @@ public class TabHeaderThing implements Listener
             @Override
             public void run()
             {
-                sendTablist(event.getPlayer(), "MLG Fortress", "IP: mlgfort.us.to");
+                sendTablist(event.getPlayer(), ChatColor.AQUA + "MLG Fortress", "IP: mlgfort.us.to");
             }
         }.runTaskLater(instance, 20L);
     }

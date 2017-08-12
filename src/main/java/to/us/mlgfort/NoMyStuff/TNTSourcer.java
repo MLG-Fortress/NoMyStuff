@@ -1,5 +1,6 @@
 package to.us.mlgfort.NoMyStuff;
 
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -38,6 +39,8 @@ public class TNTSourcer implements Listener
     @EventHandler(ignoreCancelled = true)
     public void onPunch(BlockBreakEvent event)
     {
+        if (event.getPlayer().getGameMode() == GameMode.CREATIVE)
+            return;
         if (event.getBlock().getType() == Material.TNT)
         {
             Location tnt = event.getBlock().getLocation();
