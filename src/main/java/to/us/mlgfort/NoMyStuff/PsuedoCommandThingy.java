@@ -53,13 +53,13 @@ public class PsuedoCommandThingy implements Listener
         switch (command)
         {
             case "ping":
-                sendMessage(player, "Your ping: " + getPing(player));
+                sendMessage(player, "Your ping: " + getPing(player) + "ms");
                 if (message.length > 1)
                 {
                     Player target = instance.getServer().getPlayer(message[1]);
                     if (target != null)
                     {
-                        sendMessage(player, target.getDisplayName() + "'s ping: " + getPing(target));
+                        sendMessage(player, target.getDisplayName() + "'s ping: " + getPing(target) + "ms");
                         event.setCancelled(true);
                     }
                 }
