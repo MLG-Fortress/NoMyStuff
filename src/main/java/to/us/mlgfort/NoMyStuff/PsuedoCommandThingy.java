@@ -58,7 +58,10 @@ public class PsuedoCommandThingy implements Listener
                 {
                     Player target = instance.getServer().getPlayer(message[1]);
                     if (target != null)
+                    {
                         sendMessage(player, target.getDisplayName() + "'s ping: " + getPing(target));
+                        event.setCancelled(true);
+                    }
                 }
         }
     }
