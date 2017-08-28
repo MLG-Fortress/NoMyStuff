@@ -16,6 +16,8 @@ import java.lang.reflect.InvocationTargetException;
  * Created on 6/17/2017.
  *
  * Bungee gets this, spigot doesn't, ok
+ *
+ * Update: spigot does this (or is it paper? not sure but yea) since 1.12.1 update. Woot woot.
  */
 
 public class TabHeaderThing implements Listener

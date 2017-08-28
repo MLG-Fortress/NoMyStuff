@@ -33,7 +33,7 @@ public class NoMyStuff extends JavaPlugin implements Listener
     public void onEnable()
     {
         new TNTSourcer(this);
-        new TabHeaderThing(this);
+        //new TabHeaderThing(this);
         try
         {
             getServer().getPluginManager().registerEvents(new PsuedoCommandThingy(this), this);
