@@ -16,21 +16,21 @@ import java.lang.reflect.Method;
  *
  * @author RoboMWM
  */
-public class PsuedoCommandThingy implements Listener
+public class PingCommand implements Listener
 {
     private Method muhHandle;
     private Field ping;
 
-    JavaPlugin instance;
+    private JavaPlugin instance;
 
-    PsuedoCommandThingy(JavaPlugin plugin) throws Exception
+    PingCommand(JavaPlugin plugin) throws Exception
     {
         instance = plugin;
         muhHandle = ReflectionHandler.getMethod("CraftPlayer", ReflectionHandler.PackageType.CRAFTBUKKIT_ENTITY, "getHandle");
         ping = ReflectionHandler.getField("EntityPlayer", ReflectionHandler.PackageType.MINECRAFT_SERVER, true, "ping");
     }
 
-    private int getPing(Player player)
+    public int getPing(Player player)
     {
         try
         {

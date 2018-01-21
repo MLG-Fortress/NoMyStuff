@@ -11,13 +11,9 @@ import org.bukkit.craftbukkit.v1_12_R1.CraftServer;
 import org.bukkit.craftbukkit.v1_12_R1.CraftWorld;
 import org.bukkit.craftbukkit.v1_12_R1.entity.CraftLivingEntity;
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
 import org.bukkit.entity.TNTPrimed;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
-import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import to.us.mlgfort.NoMyStuff.custom.UsefulNMSTNTPrimed;
 
@@ -30,18 +26,25 @@ import to.us.mlgfort.NoMyStuff.custom.UsefulNMSTNTPrimed;
  */
 public class NoMyStuff extends JavaPlugin implements Listener
 {
+    PingCommand pingCommand;
     public void onEnable()
     {
         new TNTSourcer(this);
         //new TabHeaderThing(this);
         try
         {
-            getServer().getPluginManager().registerEvents(new PsuedoCommandThingy(this), this);
+            pingCommand = new PingCommand(this);
+            getServer().getPluginManager().registerEvents(pingCommand, this);
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
+    }
+
+    public PingCommand getPingCommand()
+    {
+        return pingCommand;
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
