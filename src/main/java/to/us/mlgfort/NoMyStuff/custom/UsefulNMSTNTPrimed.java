@@ -1,8 +1,8 @@
 package to.us.mlgfort.NoMyStuff.custom;
 
-import net.minecraft.server.v1_12_R1.EntityTNTPrimed;
-import org.bukkit.craftbukkit.v1_12_R1.CraftServer;
-import org.bukkit.craftbukkit.v1_12_R1.entity.CraftTNTPrimed;
+import net.minecraft.server.v1_13_R1.EntityTNTPrimed;
+import org.bukkit.craftbukkit.v1_13_R1.CraftServer;
+import org.bukkit.craftbukkit.v1_13_R1.entity.CraftTNTPrimed;
 import org.bukkit.entity.LivingEntity;
 
 /**
