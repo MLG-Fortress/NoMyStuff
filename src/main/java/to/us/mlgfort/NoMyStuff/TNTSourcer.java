@@ -1,13 +1,9 @@
 package to.us.mlgfort.NoMyStuff;
 
-import com.destroystokyo.paper.event.block.TNTPrimeEvent;
-import net.minecraft.server.v1_12_R1.BlockTNT;
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
