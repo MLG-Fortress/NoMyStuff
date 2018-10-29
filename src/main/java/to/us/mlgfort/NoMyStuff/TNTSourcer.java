@@ -1,9 +1,13 @@
 package to.us.mlgfort.NoMyStuff;
 
+import com.destroystokyo.paper.event.block.TNTPrimeEvent;
+import net.minecraft.server.v1_12_R1.BlockTNT;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
@@ -47,8 +51,8 @@ public class TNTSourcer implements Listener
             tnt.setX(tnt.getX() + 0.5D);
             tnt.setY(tnt.getY() + 0.6D);
             tnt.setZ(tnt.getZ() + 0.5D);
-            instance.spawnSourcedTNTPrimed(tnt, event.getPlayer());
-            //entity.setMetadata("SOURCE", new FixedMetadataValue(instance, event.getPlayer()));
+
+            instance.spawnSourcedTNTPrimed(tnt.getWorld().spawn(tnt, TNTPrimed.class), event.getPlayer());
             event.setCancelled(true);
             event.getBlock().setType(Material.AIR);
         }
@@ -66,29 +70,32 @@ public class TNTSourcer implements Listener
         TNTPrimed tnt = (TNTPrimed)event.getEntity();
         if (tnt.hasMetadata("CS_pName"))
             player = instance.getServer().getPlayer(tnt.getMetadata("CS_pName").get(0).asString());
-        TNTPrimed betterTNT = instance.spawnSourcedTNTPrimed(tnt.getLocation(), player);
+        else
+            return;
+        instance.spawnSourcedTNTPrimed(tnt, player);
+        //TNTPrimed betterTNT = instance.spawnSourcedTNTPrimed(tnt.getLocation(), player);
 
         //Copy over metadata
-        copyMetadata(tnt, betterTNT, "CS_Label");
-        copyMetadata(tnt, betterTNT, "CS_potex");
-        copyMetadata(tnt, betterTNT, "C4_Friendly");
-        copyMetadata(tnt, betterTNT, "nullify");
-        copyMetadata(tnt, betterTNT, "CS_nodam");
-        copyMetadata(tnt, betterTNT, "CS_pName");
-        copyMetadata(tnt, betterTNT, "CS_ffcheck");
-        copyMetadata(tnt, betterTNT, "0wner_nodam");
-
-        //Copy entity attributes
-        betterTNT.setYield(tnt.getYield());
-        betterTNT.setIsIncendiary(tnt.isIncendiary());
-        betterTNT.setFuseTicks(tnt.getFuseTicks());
-
-        //Add our own metadata so we don't think this is the original CS primed tnt, lol
-        betterTNT.setMetadata("MD_CS_Converted", new FixedMetadataValue(instance, true));
-
-        //Cancel and remove original
-        event.setCancelled(true);
-        event.getEntity().remove();
+//        copyMetadata(tnt, betterTNT, "CS_Label");
+//        copyMetadata(tnt, betterTNT, "CS_potex");
+//        copyMetadata(tnt, betterTNT, "C4_Friendly");
+//        copyMetadata(tnt, betterTNT, "nullify");
+//        copyMetadata(tnt, betterTNT, "CS_nodam");
+//        copyMetadata(tnt, betterTNT, "CS_pName");
+//        copyMetadata(tnt, betterTNT, "CS_ffcheck");
+//        copyMetadata(tnt, betterTNT, "0wner_nodam");
+//
+//        //Copy entity attributes
+//        betterTNT.setYield(tnt.getYield());
+//        betterTNT.setIsIncendiary(tnt.isIncendiary());
+//        betterTNT.setFuseTicks(tnt.getFuseTicks());
+//
+//        //Add our own metadata so we don't think this is the original CS primed tnt, lol
+//        betterTNT.setMetadata("MD_CS_Converted", new FixedMetadataValue(instance, true));
+//
+//        //Cancel and remove original
+//        event.setCancelled(true);
+//        event.getEntity().remove();
     }
 
     void copyMetadata(Metadatable from, Metadatable to, String key)
