@@ -74,7 +74,7 @@ public class NoMyStuff extends JavaPlugin implements Listener
         {
             final Class<? extends TNTPrimed> tntClass = tnt.getClass();
             final Method getHandle = tntClass.getMethod("getHandle");
-            final Object handle = getHandle.invoke(tntClass);
+            final Object handle = getHandle.invoke(tntClass.newInstance());
             Field f = handle.getClass().getDeclaredField("source");
             Field modifiersField = Field.class.getDeclaredField("modifiers");
             modifiersField.setAccessible(true);
