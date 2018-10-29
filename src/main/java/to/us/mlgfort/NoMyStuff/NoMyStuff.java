@@ -26,7 +26,6 @@ import to.us.mlgfort.NoMyStuff.custom.UsefulNMSTNTPrimed;
  */
 public class NoMyStuff extends JavaPlugin implements Listener
 {
-    PingCommand pingCommand;
     public void onEnable()
     {
         try
@@ -39,20 +38,6 @@ public class NoMyStuff extends JavaPlugin implements Listener
         }
 
         //new TabHeaderThing(this);
-        try
-        {
-            pingCommand = new PingCommand(this);
-            getServer().getPluginManager().registerEvents(pingCommand, this);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-
-    public PingCommand getPingCommand()
-    {
-        return pingCommand;
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
