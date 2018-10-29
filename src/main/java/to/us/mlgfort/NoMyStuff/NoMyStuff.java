@@ -85,7 +85,7 @@ public class NoMyStuff extends JavaPlugin implements Listener
         catch (Exception e)
         {
             getLogger().severe("Update reflection.");
-            getLogger().warning(e.getStackTrace()[0].toString());
+            e.printStackTrace();
             return tnt;
         }
     }
