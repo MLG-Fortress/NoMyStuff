@@ -73,11 +73,17 @@ public class NoMyStuff extends JavaPlugin implements Listener
         try
         {
             final Class<? extends TNTPrimed> tntClass = tnt.getClass();
-            final Method getHandle = tntClass.getMethod("getHandle");
-            final Object handle = getHandle.invoke(tnt);
-            Field f = handle.getClass().getDeclaredField("source");
+            Method getHandle = tntClass.getMethod("getHandle");
+            final Object nmsTNT = getHandle.invoke(tnt);
+            Field f = nmsTNT.getClass().getDeclaredField("source");
             f.setAccessible(true);
-            f.set(handle, source);
+
+            final Class<? extends LivingEntity> sourceClass = source.getClass();
+            getHandle = sourceClass.getMethod("getHandle");
+            final Object nmsEntity = getHandle.invoke(source);
+
+            f.set(nmsTNT, nmsEntity);
+
             return tnt;
         }
         catch (Exception e)
